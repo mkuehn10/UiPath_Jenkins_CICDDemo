@@ -49,6 +49,16 @@ pipeline {
 	        stage('Test') {
 	            steps {
 	                echo 'Testing..the workflow...'
+					UiPathTest (
+						testTarget: [$class: 'TestSetEntry', testSet: "HashProcess_TestSet"],
+          				orchestratorAddress: "${UIPATH_ORCH_URL}",
+	                	orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
+	                	folderName: "${UIPATH_ORCH_FOLDER_NAME}",
+          				timeout: "10000",
+          				traceLoggingLevel: 'None',
+          				testResultsOutputPath: "result.xml",
+          				credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: '3c43701f-a8d8-4fd9-a4d1-1ed40827bc2b']
+					)
 	            }
 	        }
 	
