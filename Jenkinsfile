@@ -51,14 +51,23 @@ pipeline {
 	                echo 'Testing..the workflow...'
 					UiPathTest (
 						credentials: UserPass('87c9735b-8a1c-4292-b0f8-d51f63199b35'), 
-						folderName: "${UIPATH_ORCH_FOLDER_NAME}", 
-						orchestratorAddress: "${UIPATH_ORCH_URL}", 
-						orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}", 
-						parametersFilePath: '', 
-						testResultsOutputPath: 'result.xml', 
-						testTarget: TestSet('HashProcess_TestSet'), 
-						timeout: 10000, 
-						traceLevel: 'None'
+                    folderName: "${UIPATH_ORCH_FOLDER_NAME}", 
+                    orchestratorAddress: "${UIPATH_ORCH_URL}", 
+                    orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}", 
+                    parametersFilePath: '', 
+                    testResultsOutputPath: '', 
+                    testTarget: TestProject(environments: '', testProjectPath: 'project.json'), 
+                    traceLevel: 'Verbose',
+                    timeout: 10000
+						//credentials: UserPass('87c9735b-8a1c-4292-b0f8-d51f63199b35'), 
+						//folderName: "${UIPATH_ORCH_FOLDER_NAME}", 
+						//orchestratorAddress: "${UIPATH_ORCH_URL}", 
+						//orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}", 
+						//parametersFilePath: '', 
+						//testResultsOutputPath: 'result.xml', 
+						//testTarget: TestSet('HashProcess_TestSet'), 
+						//timeout: 10000, 
+						//traceLevel: 'None'
 					)
 	            }
 	        }
